@@ -11,6 +11,7 @@
     <!-- string IDs for home -->
     <string name="post_comment">Finished ></string>
     <string name="read_comments_title">Check List</string>
+    <string name="register_title">CPC Check List</string>
     <string name="passwords_not_same">Passwords don\'t match</string>
     <string name="test">Check this</string>
     

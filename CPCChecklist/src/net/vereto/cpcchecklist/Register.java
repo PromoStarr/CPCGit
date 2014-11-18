@@ -120,7 +120,7 @@ public class Register extends Activity implements OnClickListener{
             pDialog.dismiss();
             if (file_url != null){
             	Toast.makeText(Register.this, file_url, Toast.LENGTH_LONG).show();     
-            	Intent i = new Intent(Register.this, ReadComments.class);
+            	Intent i = new Intent(Register.this, ReadItems.class);
                 startActivity(i);}
         	}
 	}

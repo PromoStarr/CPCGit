@@ -27,7 +27,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ReadComments extends ListActivity {
+public class ReadItems extends ListActivity {
 
 	// Progress Dialog
 	private ProgressDialog pDialog;
@@ -49,9 +49,9 @@ public class ReadComments extends ListActivity {
     
 
    //An array of all of our comments
-    private JSONArray mComments = null;
+    private JSONArray mItems = null;
     //manages all of our comments in a list.
-    private ArrayList<HashMap<String, String>> mCommentList;
+    private ArrayList<HashMap<String, String>> mItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class ReadComments extends ListActivity {
 
 	public void addComment(View v)
     {
-        Intent i = new Intent(ReadComments.this, AddComment.class);
+        Intent i = new Intent(ReadItems.this, AddComment.class);
         startActivity(i);
     }
 
@@ -82,9 +82,8 @@ public class ReadComments extends ListActivity {
     	// Instantiate the arraylist to contain all the JSON data.
     	// we are going to use a bunch of key-value pairs, referring
     	// to the json element name, and the content, for example,
-    	// message it the tag, and "I'm awesome" as the content..
-    	
-        mCommentList = new ArrayList<HashMap<String, String>>();
+    	// message it the tag, and "I'm awesome" as the content..    	
+        mItemList = new ArrayList<HashMap<String, String>>();
         
         // Bro, it's time to power up the J parser 
         JSONParser jParser = new JSONParser();
@@ -98,11 +97,11 @@ public class ReadComments extends ListActivity {
             
         	//mComments will tell us how many "posts" or comments are
         	//available
-            mComments = json.getJSONArray(TAG_POSTS);
+            mItems = json.getJSONArray(TAG_POSTS);
 
             // looping through all posts according to the json object returned
-            for (int i = 0; i < mComments.length(); i++) {
-                JSONObject c = mComments.getJSONObject(i);
+            for (int i = 0; i < mItems.length(); i++) {
+                JSONObject c = mItems.getJSONObject(i);
 
                 //gets the content of each tag
                 String content = c.getString(TAG_DESCRIPT);
@@ -116,7 +115,7 @@ public class ReadComments extends ListActivity {
                 map.put(TAG_ITEM, item);
              
                 // adding HashList to ArrayList
-                mCommentList.add(map);                
+                mItemList.add(map);                
                 //annndddd, our JSON data is up to date same with our array list
             }
 
@@ -136,7 +135,7 @@ public class ReadComments extends ListActivity {
     			//use our single_post xml template for each item in our list,
     			//and place the appropriate info from the list to the
     			//correct GUI id.  Order is important here.
-    			ListAdapter adapter = new SimpleAdapter(this, mCommentList,
+    			ListAdapter adapter = new SimpleAdapter(this, mItemList,
     					R.layout.single_comment, new String[] { TAG_ITEM, TAG_DESCRIPT
     					}, new int[] { R.id.item, R.id.item_descript});
 
@@ -155,8 +154,8 @@ public class ReadComments extends ListActivity {
     					// This method is triggered if an item is click within our
     					// list. For our example we won't be using this, but
     					// it is useful to know in real life applications.
-    					Toast.makeText(ReadComments.this,ID, Toast.LENGTH_LONG).show();     
-    	            	Intent i = new Intent(ReadComments.this, AddComment.class);
+    					Toast.makeText(ReadItems.this,ID, Toast.LENGTH_LONG).show();     
+    	            	Intent i = new Intent(ReadItems.this, AddComment.class);
     	                startActivity(i);}
     				
     			});    
@@ -167,7 +166,7 @@ public class ReadComments extends ListActivity {
     	@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pDialog = new ProgressDialog(ReadComments.this);
+			pDialog = new ProgressDialog(ReadItems.this);
 			pDialog.setMessage("Loading Comments...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(true);
@@ -175,7 +174,7 @@ public class ReadComments extends ListActivity {
 		}
         @Override
         protected Boolean doInBackground(Void... arg0) {
-        	//we will develop this method in version 2
+        	
             updateJSONdata();
             return null;
 
@@ -186,7 +185,7 @@ public class ReadComments extends ListActivity {
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
             pDialog.dismiss();
-          //we will develop this method in version 2
+          
             updateList();
         }
     }

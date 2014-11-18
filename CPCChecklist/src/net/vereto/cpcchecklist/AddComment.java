@@ -36,6 +36,7 @@ public class AddComment extends Activity implements OnClickListener{
     //ids
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class AddComment extends Activity implements OnClickListener{
 		
 		mSubmit = (Button)findViewById(R.id.submit);
 		mSubmit.setOnClickListener(this);
+		
 		
 	}
 

@@ -1850,19 +1850,20 @@ containing a value of this type.
         /**  String ids for registration 
          */
         public static final int app_name=0x7f0a000f;
-        public static final int navigation_drawer_close=0x7f0a001a;
-        public static final int navigation_drawer_open=0x7f0a0019;
+        public static final int navigation_drawer_close=0x7f0a001b;
+        public static final int navigation_drawer_open=0x7f0a001a;
         public static final int password_textview=0x7f0a0012;
-        public static final int passwords_not_same=0x7f0a0017;
+        public static final int passwords_not_same=0x7f0a0018;
         /**  string IDs for home 
          */
         public static final int post_comment=0x7f0a0015;
         public static final int read_comments_title=0x7f0a0016;
+        public static final int register_title=0x7f0a0017;
         public static final int submit=0x7f0a0013;
-        public static final int test=0x7f0a0018;
-        public static final int title_section1=0x7f0a001b;
-        public static final int title_section2=0x7f0a001c;
-        public static final int title_section3=0x7f0a001d;
+        public static final int test=0x7f0a0019;
+        public static final int title_section1=0x7f0a001c;
+        public static final int title_section2=0x7f0a001d;
+        public static final int title_section3=0x7f0a001e;
         public static final int username_textview=0x7f0a0011;
     }
     public static final class style {
